@@ -10,9 +10,19 @@ namespace ChatCli.Interactions
 
             while (true)
             {
-                //TODO
-                //Add Switch
-                //Add ClientConsole calls...
+                switch (msg)
+                {
+                    case "q":
+                    case "quit":
+                    case "exit":
+                        return;
+                    default:
+                        ClientConsole.ClearConsole();
+                        ClientConsole.SendMessage(serviceClient, msg);
+                        ClientConsole.PrintAllMessages(serviceClient);
+                        msg = ClientConsole.ReadMessageFromConsole();
+                        break;
+                }
             }
         }
     }
